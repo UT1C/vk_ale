@@ -7,35 +7,15 @@
 // @license      MIT
 // @homepageURL  https://github.com/UT1C/vk_ale
 // @supportURL   https://github.com/UT1C/vk_ale/issues
-// @downloadURL  https://raw.githubusercontent.com/UT1C/vk_ale/release/main.js
-// @updateURL    https://raw.githubusercontent.com/UT1C/vk_ale/release/main.js
+// @downloadURL  https://raw.githubusercontent.com/UT1C/vk_ale/release/src/main.js
+// @updateURL    https://raw.githubusercontent.com/UT1C/vk_ale/release/src/main.js
 
 // @match      *://vk.com/*
 // @run-at       document-start
 
 // @require      https://code.jquery.com/jquery-3.6.0.min.js
+// @require      https://raw.githubusercontent.com/UT1C/vk_ale/release/src/utils.js
 // ==/UserScript==
-
-// utils
-function waitForElement(elementName, func) {
-    var id = setInterval(
-        function() {
-            if ($(elementName).length) {
-                func($(elementName));
-                clearInterval(id);
-            }
-        },
-        100
-    )
-}
-function deleteElement(elementName) {
-    waitForElement(
-        elementName,
-        function deleter(element) {
-            element.remove()
-        }
-    )
-}
 
 // feed redirect disable
 if (location.href == "https://vk.com/feed" && origin == "https://vk.com")
