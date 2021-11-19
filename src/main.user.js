@@ -7,8 +7,8 @@
 // @license      MIT
 // @homepageURL  https://github.com/UT1C/vk_ale
 // @supportURL   https://github.com/UT1C/vk_ale/issues
-// @downloadURL  https://raw.githubusercontent.com/UT1C/vk_ale/release/src/main.js
-// @updateURL    https://raw.githubusercontent.com/UT1C/vk_ale/release/src/main.js
+// @downloadURL  https://raw.githubusercontent.com/UT1C/vk_ale/release/src/main.user.js
+// @updateURL    https://raw.githubusercontent.com/UT1C/vk_ale/release/src/main.user.js
 
 // @match      *://vk.com/*
 // @run-at       document-start
