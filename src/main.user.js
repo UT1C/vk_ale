@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         vk_ale
 // @description  lets disable it.
-// @version      0.0.0.1
+// @version      0.0.0.2
 // @author       lightmanLP & mikk357
 
 // @license      MIT
