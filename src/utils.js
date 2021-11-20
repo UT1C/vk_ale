@@ -1,4 +1,4 @@
-function waitForElement(elementName, func) {
+function waitForElement (elementName, func) {
     var id = setInterval(
         function() {
             if ($(elementName).length) {
@@ -10,11 +10,18 @@ function waitForElement(elementName, func) {
     )
 }
 
-function deleteElement(elementName) {
+function deleteElement (elementName) {
     waitForElement(
         elementName,
         function deleter(element) {
-            element.remove()
+            if (Symbol.iterator in element) {
+                for (let i of element) {
+                    i.remove();
+                }
+            }
+            else {
+                element.remove();
+            }
         }
     )
 }

@@ -24,18 +24,29 @@ if (location.href == "https://vk.com/feed" && origin == "https://vk.com")
 }
 
 // remove ecosystem menu
-document.addEventListener(
-    "DOMContentLoaded",
-    function (event) {
-        deleteElement("#top_ecosystem_navigation_link");
-        deleteElement("#top_ecosystem_navigation_menu");
+deleteElement("#top_ecosystem_navigation_link");
+deleteElement("#top_ecosystem_navigation_menu");
+
+// remove mini chat
+deleteElement("#fastchat-reforged");
+
+// remove some ecosystem shit from top profile menu
+deleteElement("#react_rootEcosystemAccountMenuEntry");
+waitForElement(
+    "#top_profile_menu",
+    function (element) {
+        element.style["boxShadow"] = "0 0 0 0.5px rgba(0, 0, 0, 0.25)";
+        // 
     }
 );
 
-// remove mini chat
-document.addEventListener(
-    "DOMContentLoaded",
-    function (event) {
-        deleteElement("#fastchat-reforged");
+// remove shitty border radius
+waitForElement(
+    "#top_profile_menu",
+    function (element) {
+        element.style["borderRadius"] = "0 0 3px 3px";
     }
 );
+
+// remove family-friendly simplified left menu icons
+deleteElement("LeftMenu__icon");
