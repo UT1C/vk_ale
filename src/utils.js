@@ -10,18 +10,6 @@ function waitForElement (elementName, func) {
     )
 }
 
-function waitForElementStyle (elementName, func) {
-    var id = setInterval(
-        () => {
-            if ($(elementName).style) {
-                func($(elementName));
-                clearInterval(id);
-            }
-        },
-        100
-    )
-}
-
 function deleteElement (elementName) {
     waitForElement(
         elementName,

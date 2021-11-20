@@ -15,6 +15,7 @@
 
 // @require      https://code.jquery.com/jquery-3.6.0.min.js
 // @require      https://raw.githubusercontent.com/UT1C/vk_ale/release/src/utils.js
+// @grant        GM_addStyle
 // ==/UserScript==
 
 document.addEventListener(
@@ -43,25 +44,19 @@ deleteElement("#fastchat-reforged");
 
 // remove some ecosystem shit from top profile menu
 deleteElement("#react_rootEcosystemAccountMenuEntry");
-document.addEventListener(
-    "loadend",
-    waitForElement(
-        "#top_profile_menu",
-        (element) => {
-            element.style["boxShadow"] = "0 0 0 0.5px rgba(0, 0, 0, 0.25)";
-        }
-    )
+waitForElement(
+    "#top_profile_menu",
+    (elements) => {
+        elements[0].style["boxShadow"] = "0 0 0 0.5px rgba(0, 0, 0, 0.25)";
+    }
 );
 
 // remove shitty border radius
-document.addEventListener(
-    "loadend",
-    waitForElement(
-        "#top_profile_menu",
-        (element) => {
-            element.style["borderRadius"] = "0 0 3px 3px";
-        }
-    )
+waitForElement(
+    "#top_profile_menu",
+    (elements) => {
+        elements[0].style["borderRadius"] = "0 0 3px 3px";
+    }
 );
 
 // remove family-friendly simplified left menu icons
