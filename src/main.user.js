@@ -18,22 +18,17 @@
 // @grant        GM_addStyle
 // ==/UserScript==
 
-document.addEventListener(
-    "popstate",
-    (event) => {
-        // redirect from feed to im
-        if (location.href == "https://vk.com/feed")
-        {
-            location.replace("https://vk.com/im");
-        }
+// redirect from feed to im
+if (location.pathname == "/feed" || location.pathname == "/al_feed.php")
+{
+    location.replace("https://vk.com/im");
+}
 
-        // redirect on my music instead of govnovoz2007 choose of year
-        if (location.href.match(/^https:\/\/vk.com\/audios\d+$/))
-        {
-            location.replace(`https://vk.com/${location.pathname}?section=all`);
-        }
-    }
-);
+// redirect on my music instead of govnovoz2007 choose of year
+else if (location.pathname.match(/^\/audios\d+$/) || location.pathname == "/al_audio.php")
+{
+    location.replace(`https://vk.com${location.pathname}?section=all`);
+}
 
 // remove ecosystem menu
 deleteElement("#top_ecosystem_navigation_link");
