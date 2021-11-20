@@ -19,13 +19,13 @@
 // ==/UserScript==
 
 // redirect from feed to im
-if (location.pathname == "/feed" || location.pathname == "/al_feed.php")
+if (location.href == "https://vk.com/feed" || location.pathname == "/al_feed.php")
 {
     location.replace("https://vk.com/im");
 }
 
 // redirect on my music instead of govnovoz2007 choose of year
-else if (location.pathname.match(/^\/audios\d+$/) || location.pathname == "/al_audio.php")
+else if (location.href.match(/^https:\/\/vk.com\/audios\d+$/) || location.pathname == "/al_audio.php")
 {
     location.replace(`https://vk.com${location.pathname}?section=all`);
 }
