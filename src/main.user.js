@@ -10,18 +10,29 @@
 // @downloadURL  https://raw.githubusercontent.com/UT1C/vk_ale/release/src/main.user.js
 // @updateURL    https://raw.githubusercontent.com/UT1C/vk_ale/release/src/main.user.js
 
-// @match      *://vk.com/*
+// @match      https://vk.com/*
 // @run-at       document-start
 
 // @require      https://code.jquery.com/jquery-3.6.0.min.js
 // @require      https://raw.githubusercontent.com/UT1C/vk_ale/release/src/utils.js
 // ==/UserScript==
 
-// feed redirect disable
-if (location.href == "https://vk.com/feed" && origin == "https://vk.com")
-{
-    location.replace("https://vk.com/im");
-}
+document.addEventListener(
+    "popstate",
+    (event) => {
+        // redirect from feed to im
+        if (location.href == "https://vk.com/feed")
+        {
+            location.replace("https://vk.com/im");
+        }
+
+        // redirect on my music instead of govnovoz2007 choose of year
+        if (location.href.match(/^https:\/\/vk.com\/audios\d+$/))
+        {
+            location.replace(`https://vk.com/${location.pathname}?section=all`);
+        }
+    }
+);
 
 // remove ecosystem menu
 deleteElement("#top_ecosystem_navigation_link");
@@ -32,20 +43,25 @@ deleteElement("#fastchat-reforged");
 
 // remove some ecosystem shit from top profile menu
 deleteElement("#react_rootEcosystemAccountMenuEntry");
-waitForElement(
-    "#top_profile_menu",
-    function (element) {
-        element.style["boxShadow"] = "0 0 0 0.5px rgba(0, 0, 0, 0.25)";
-        // 
-    }
+document.addEventListener(
+    "loadend",
+    waitForElement(
+        "#top_profile_menu",
+        (element) => {
+            element.style["boxShadow"] = "0 0 0 0.5px rgba(0, 0, 0, 0.25)";
+        }
+    )
 );
 
 // remove shitty border radius
-waitForElement(
-    "#top_profile_menu",
-    function (element) {
-        element.style["borderRadius"] = "0 0 3px 3px";
-    }
+document.addEventListener(
+    "loadend",
+    waitForElement(
+        "#top_profile_menu",
+        (element) => {
+            element.style["borderRadius"] = "0 0 3px 3px";
+        }
+    )
 );
 
 // remove family-friendly simplified left menu icons
