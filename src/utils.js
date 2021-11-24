@@ -1,12 +1,20 @@
 function waitForElement (elementName, func) {
     var id = setInterval(
         () => {
-            if ($(elementName).length) {
-                func($(elementName));
+            let element = $(elementName);
+            if (element.length) {
+                func(element);
                 clearInterval(id);
+            }
+            else {
+                delete element;
             }
         },
         100
+    )
+    setTimeout(
+        () => {clearInterval(id)},
+        10000
     )
 }
 

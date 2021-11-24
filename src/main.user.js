@@ -27,7 +27,7 @@ if (location.href == "https://vk.com/feed" || location.pathname == "/al_feed.php
 // redirect on my music instead of govnovoz2007 choose of year
 else if (location.href.match(/^https:\/\/vk.com\/audios\d+$/) || location.pathname == "/al_audio.php")
 {
-    location.replace(`https://vk.com${location.pathname}?section=all`);
+    location.replace("https://vk.com/audios0?section=all");
 }
 
 // remove ecosystem menu
@@ -55,4 +55,7 @@ waitForElement(
 );
 
 // remove family-friendly simplified left menu icons
-deleteElement("LeftMenu__icon");
+deleteElement(".LeftMenu__icon");
+
+// remove conversation recomendation
+deleteElement(".ConvoRecommendList");
