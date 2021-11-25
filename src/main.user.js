@@ -10,25 +10,31 @@
 // @downloadURL  https://raw.githubusercontent.com/UT1C/vk_ale/release/src/main.user.js
 // @updateURL    https://raw.githubusercontent.com/UT1C/vk_ale/release/src/main.user.js
 
-// @match      https://vk.com/*
+// @match        https://vk.com/*
 // @run-at       document-start
+// @grant        GM_addStyle
+// @grant        window.onurlchange
 
 // @require      https://code.jquery.com/jquery-3.6.0.min.js
 // @require      https://raw.githubusercontent.com/UT1C/vk_ale/release/src/utils.js
-// @grant        GM_addStyle
 // ==/UserScript==
 
-// redirect from feed to im
-if (location.href == "https://vk.com/feed" || location.pathname == "/al_feed.php")
-{
-    location.replace("https://vk.com/im");
-}
-
-// redirect on my music instead of govnovoz2007 choose of year
-else if (location.href.match(/^https:\/\/vk.com\/audios\d+$/) || location.pathname == "/al_audio.php")
-{
-    location.replace("https://vk.com/audios0?section=all");
-}
+$(window).on(
+    "DOMContentLoaded urlchange",
+    () => {
+        // redirect from feed to im
+        if (location.href == "https://vk.com/feed" || location.pathname == "/al_feed.php")
+        {
+            location.replace("https://vk.com/im");
+        }
+    
+        // redirect on my music instead of govnovoz2007 choose of year
+        else if (location.href.match(/^https:\/\/vk.com\/audios\d+$/) || location.pathname == "/al_audio.php")
+        {
+            location.replace("https://vk.com/audios0?section=all");
+        }
+    }
+);
 
 // remove ecosystem menu
 deleteElement("#top_ecosystem_navigation_link");
