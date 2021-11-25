@@ -19,22 +19,27 @@
 // @require      https://raw.githubusercontent.com/UT1C/vk_ale/release/src/utils.js
 // ==/UserScript==
 
-$(window).on(
-    "DOMContentLoaded urlchange",
-    () => {
-        // redirect from feed to im
-        if (location.href == "https://vk.com/feed" || location.pathname == "/al_feed.php")
-        {
-            location.replace("https://vk.com/im");
-        }
-    
-        // redirect on my music instead of govnovoz2007 choose of year
-        else if (location.href.match(/^https:\/\/vk.com\/audios\d+$/) || location.pathname == "/al_audio.php")
-        {
-            location.replace("https://vk.com/audios0?section=all");
-        }
+function redirectHandler() {
+    // redirect from feed to im
+    if (
+        location.href == "https://vk.com"
+        || location.href == "https://vk.com/feed"
+        || location.pathname == "/al_feed.php"
+    ) {
+        location.replace("https://vk.com/im");
     }
-);
+
+    // redirect on my music instead of govnovoz2007 choose of year
+    else if (
+        location.href.match(/^https:\/\/vk.com\/audios\d+$/)
+        || location.pathname == "/al_audio.php"
+    ) {
+        location.replace("https://vk.com/audios0?section=all");
+    }
+}
+
+window.addEventListener("DOMContentLoaded", redirectHandler);
+window.addEventListener("urlchange", redirectHandler);
 
 // remove ecosystem menu
 deleteElement("#top_ecosystem_navigation_link");
